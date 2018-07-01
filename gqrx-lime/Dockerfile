@@ -1,5 +1,14 @@
-FROM ubuntu:latest
+FROM ubuntu:17.04
 MAINTAINER jon
+
+#reset the repos
+# from: https://ubuntuforums.org/showthread.php?t=2382832
+RUN echo "## EOL upgrade sources.list" > /etc/apt/sources.list
+RUN echo "# Required" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ zesty main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ zesty-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ zesty-security main restricted universe multiverse" >> /etc/apt/sources.list
+
 
 # enable ssh
 RUN apt-get update; exit 0
@@ -38,7 +47,7 @@ RUN ldconfig
 RUN apt -y install mousepad
 # docker run -t -i --privileged limesdr-oai bash
 # to run with GUI capabilities!
-# docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix limesdr-oai bash
+# docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jumson/gqrx-lime:remoted bash
 # CMD LimeSuiteGUI
 CMD gqrx
 

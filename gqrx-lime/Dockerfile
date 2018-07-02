@@ -1,4 +1,4 @@
-FROM jumson/limesdr:grc-lime
+FROM jumson/limesdr:latest-grc
 MAINTAINER jon
 ARG DEBIAN_FRONTEND=noninteractiv
 # this container uses my grc-lime as a base, so GNURadio is already built-in.

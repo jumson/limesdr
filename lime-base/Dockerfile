@@ -45,7 +45,10 @@ RUN sudo apt-get -y install git g++ cmake libsqlite3-dev
 RUN sudo apt-get -y install libsoapysdr-dev libi2c-dev libusb-1.0-0-dev
 
 #install graphics dependencies
-RUN sudo apt-get -y install libwxgtk3.0-dev freeglut3-dev libboost-all-dev swig libboost-all-dev swig
+RUN sudo apt-get -y install libwxgtk3.0-dev freeglut3-dev libboost-all-dev swig libboost-all-dev swig 
+
+#take care of tzdata, etc breaking things?
+RUN apt-get install tzdata -y --no-install-recommends apt-utils
 
 # install SoapySDR, LimeSuite needs this
 # github.com/pothosware/SoapySDR.git
@@ -75,13 +78,16 @@ RUN pwd; ls -al
 RUN sudo chmod a+x install.sh; 
 RUN sudo ./install.sh
 
+#extra things to quickly add to the image base
+RUN sudo apt-get -y install screen
+
 # Download board firmware (only run when hardware! is connected!)
 # RUN LimeUtil --update; exit 0
 
 # to build
-# docker build --rm -f gqrx-lime/Dockerfile -t jumson/limesdr:gqrx-lime gqrx-lime
+# docker build --rm -f lime-base/Dockerfile -t jumson/limesdr:lime-base lime-base
 # to run with GUI capabilities!
-# docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jumson/limesdr:gqrx-lime
+# docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jumson/limesdr:lime-base
 EXPOSE 22
 # must run with -p to actually use it... 
 

@@ -1,0 +1,28 @@
+
+
+
+The notes from the webpage are below:
+----------------------------------------------------------------------------
+LimeSDR utilities (LimeUtil and drivers), SoapySDR and UHD with 
+osmocom GSM stack tested basic functionality with osmo-trx, 
+osmo-niiitb and osmo-bts-trx. Launch with LimeSDR device attached:
+
+LimeUtil --find
+lsusb <-- look for matching device on usb bus xxx yyy
+then launch this image with:
+docker run -it --device=/dev/bus/usb/xxx/yyy cswiger/limeosmogsm01:latest bash
+
+and in 3 screen sessions start in root /
+osmo-trx
+osmo-nitb
+osmo-bts-trx
+
+telnet 0 4242 to add subscribers per the osmo-nitb vty reference manual.
+----------------------------------------------------------------------------
+
+to do this, launch screen: screen
+then run C-a c to get a new window, and then run those commands in order with 
+new windows.
+Then to toggle back, C-a 0 is the first window, then C-a 1, etc.
+
+Consider adding screen or tmux to my base for this kind of functionality.

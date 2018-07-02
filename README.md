@@ -15,9 +15,14 @@ The goal is to provide images for: LTE eNodeB GSM BTS Basic GNURadio & LimeSuite
 
 ``` docker build --rm -f full-lime/Dockerfile -t jumson/limesdr:lime-full full-lime```
 
-* to run with GUI capabilities
+* to run with GUI capabilities (linux)
 
 ``` docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jumson/limesdr:lime-full```
+* to run with GUI capabilities in Windows -- have [VcXser X Server running ](http://vcxsrv.sourceforge.net)
+  * Find your 172.x.y.z ip address handy, Docker gives this to you, run ipconfig
+``` docker run -ti --rm -e DISPLAY=172.27.71.97:0.0 -v d:/sdr:/tmp/share jumson/limesdr:late-grc```
+  * Note: the -v option maps a local to a remote(in container) folder. you can use as many as you like.
+  * Other note -- this is only moderately useful because docker on windows cannot pass control of the USB device -- so no actual operation of hte SDR can be done through a docker on Windows.
 
 * to run with SSH capability....tbd, need to use the -p 22:22 argument though
 

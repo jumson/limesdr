@@ -1,4 +1,4 @@
-FROM jumson/limesdr:lime-base     
+FROM jumson/limesdr:latest-base     
 MAINTAINER jon
 ARG DEBIAN_FRONTEND=noninteractive
 

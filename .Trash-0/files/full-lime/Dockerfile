@@ -20,6 +20,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 #Setup git, sudo and other user called docker
 # follow these isntructions! https://wiki.gnuradio.org/index.php/InstallingGRFromSource
 RUN apt-get -y install git sudo python-pip udev mousepad software-properties-common 
+RUN apt-get install tzdata -y --no-install-recommends apt-utils
 RUN git config --global user.name "jumson"
 RUN git config --global user.email "munsonj@gmail.com"
 

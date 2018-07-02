@@ -7,42 +7,9 @@ ARG DEBIAN_FRONTEND=noninteractiv
 #----GQRX application below----#
 # https://github.com/csete/gqrx
 
-# gr-iqbalance
-WORKDIR /
-RUN git clone https://github.com/osmocom/gr-iqbal.git
-#this creates directory too
-WORKDIR gr-iqbal/build
-# RUN mkdir build
-RUN cmake ..
-RUN make
-RUN sudo make install
-RUN sudo ldconfig
+RUN pybombs install gqrx
 
-# not compiling pulseaudio unless required....
-# https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/Developer/PulseAudioFromGit/
-
-# install GQRX: http://gqrx.dk/download/install-ubuntu
-RUN sudo apt-get purge --auto-remove gqrx
-RUN sudo apt-get purge --auto-remove gqrx-sdr
-RUN sudo apt-get purge --auto-remove libgnuradio*
-
-RUN sudo add-apt-repository -y ppa:bladerf/bladerf
-RUN sudo add-apt-repository -y ppa:myriadrf/drivers
-RUN sudo add-apt-repository -y ppa:myriadrf/gnuradio
-RUN sudo add-apt-repository -y ppa:gqrx/gqrx-sdr
-RUN sudo apt-get update
-
-RUN sudo apt-get install gqrx-sdr
-
-RUN sudo ldconfig
-
-## It is recommended that users also install the libvolk1-bin package and 
-## run the volk_profile tool to optimize GNU Radio performance on the 
-## specific computer it is being used on.
-RUN sudo apt-get install libvolk1-bin
-RUN volk_profile
-
-CMD gqrx
+CMD bash -c 'pybombs run gqrx'
 
 #for testing/debug
 EXPOSE 22

@@ -1,7 +1,9 @@
 FROM ubuntu:latest      
 MAINTAINER jon
-# from: https://discourse.myriadrf.org/t/howto-install-gqrx-gnuradio-soapysdr-pothosware-limesuite-on-ubuntu/2402
 ARG DEBIAN_FRONTEND=noninteractive
+
+# from: https://discourse.myriadrf.org/t/howto-install-gqrx-gnuradio-soapysdr-pothosware-limesuite-on-ubuntu/2402
+
 # Setting up SSH login ability
 RUN apt-get update; exit 0
 RUN apt-get install -y openssh-server

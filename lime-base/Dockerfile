@@ -1,5 +1,5 @@
-FROM ubuntu:latest      
-MAINTAINER jon
+FROM armv7/armhf-ubuntu:16.04
+LABEL maintainer="munsonj@gmail.com"
 ARG DEBIAN_FRONTEND=noninteractive
 
 

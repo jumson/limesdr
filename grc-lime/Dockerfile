@@ -1,5 +1,5 @@
 FROM jumson/limesdr:latest-base     
-MAINTAINER jon
+LABEL maintainer="munsonj@gmail.com"
 ARG DEBIAN_FRONTEND=noninteractive
 
 #-------------everything below is application specific ----------------#

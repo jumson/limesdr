@@ -1,5 +1,5 @@
 FROM jumson/limesdr:latest-grc
-MAINTAINER jon
+LABEL maintainer="munsonj@gmail.com"
 ARG DEBIAN_FRONTEND=noninteractiv
 # this container uses my grc-lime as a base, so GNURadio is already built-in.
 #-------------everything below is application specific ----------------#

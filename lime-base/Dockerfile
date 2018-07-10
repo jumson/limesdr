@@ -1,4 +1,4 @@
-FROM armv7/armhf-ubuntu:16.04
+FROM armv7/armv7/armhf-ubuntu
 LABEL maintainer="munsonj@gmail.com"
 ARG DEBIAN_FRONTEND=noninteractive
 

@@ -1,4 +1,4 @@
-FROM armv7/armv7/armhf-ubuntu
+FROM debian:stretch-lite
 LABEL maintainer="munsonj@gmail.com"
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -89,7 +89,7 @@ RUN sudo apt-get -y install screen
 # to run with GUI capabilities!
 # docker run -ti --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jumson/limesdr:lime-base
 EXPOSE 22
-# must run with -p to actually use it... 
+# must run with -p to actually use it ssh insterface on the port
 
 #-------------everything below is application specific ----------------#
 #-- the above layers should be common to all doe LimeSDR applications--#
